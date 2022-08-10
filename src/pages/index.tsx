@@ -14,9 +14,11 @@ const Search: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <form className={styles.formContainer} onSubmit={() => {}}>
-          <SearchBar />
-        </form>
+        <SearchBar
+          onSubmit={(value) => {
+            console.log(value);
+          }}
+        />
       </main>
     </div>
   );
