@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import SearchBar from "../search/SearchBar";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Search.module.css";
 
 const Search: NextPage = () => {
   return (
@@ -14,7 +14,9 @@ const Search: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <SearchBar />
+        <form className={styles.formContainer} onSubmit={() => {}}>
+          <SearchBar />
+        </form>
       </main>
     </div>
   );

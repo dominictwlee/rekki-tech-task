@@ -6,6 +6,9 @@ export default function SearchBar() {
       <div className={styles.search}>
         <input
           type="text"
+          name="search"
+          id="search"
+          required
           className={styles.searchInput}
           placeholder="Search..."
           aria-label="Search"
