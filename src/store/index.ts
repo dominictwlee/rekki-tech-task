@@ -1,9 +1,12 @@
 interface Action<TType = any> {
   type: TType;
+}
+
+export interface ActionWithExtras extends Action {
   [props: string]: any;
 }
 
-type Reducer<TState = any, TAction = Action> = (
+type Reducer<TState = any, TAction extends Action = ActionWithExtras> = (
   state: TState,
   action: TAction
 ) => TState;
@@ -13,9 +16,9 @@ type Unsubscribe = () => void;
 type ObserverCallback = () => void;
 
 export default class Store<
+  TReducer extends Reducer<TState, TAction>,
   TState,
-  TAction extends Action,
-  TReducer extends Reducer<TState, TAction>
+  TAction extends Action = ActionWithExtras
 > {
   private observers: ObserverCallback[] = [];
   private reducer: TReducer;
@@ -36,7 +39,7 @@ export default class Store<
       throw new Error("Actions cannot be dispatched from reducer");
     }
     this.isDispatching = true;
-    this.reducer(this.state, action);
+    this.state = this.reducer(this.state, action);
     this.isDispatching = false;
     for (const observer of this.observers) {
       observer();
@@ -49,7 +52,7 @@ export default class Store<
     return this.unsubscribe.bind(this, observer);
   }
 
-  unsubscribe(observer: ObserverCallback) {
+  private unsubscribe(observer: ObserverCallback) {
     const observerIndex = this.observers.indexOf(observer);
     if (observerIndex > -1) {
       this.observers.splice(observerIndex, 1);
