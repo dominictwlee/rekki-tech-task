@@ -1,4 +1,5 @@
 import { GetSearchResponse } from "./api";
+import styles from "../styles/Search.module.css";
 
 interface SearchResultListProps {
   items?: GetSearchResponse["data"]["items"];
@@ -30,9 +31,9 @@ function SearchResultListItem({
 }: SearchResultListItemProps) {
   return (
     <>
-      <dt style={{ marginTop: "10px" }}>{title}</dt>
+      <dt className={styles.searchResultTitle}>{title}</dt>
       <dd>{`by ${authors.join(" & ")}`}</dd>
-      <dd>{description}</dd>
+      <dd className={styles.searchResultDescription}>{description}</dd>
     </>
   );
 }
