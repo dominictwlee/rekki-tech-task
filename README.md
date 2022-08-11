@@ -1,34 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## Getting Started
 
-First, run the development server:
+First, install dependencies:
+```bash
+yarn install
+```
+
+Then, run the development server:
 
 ```bash
-npm run dev
-# or
 yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Run tests
+```bash
+yarn test
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Folder structure
+I roughly organized each exercise into it's own domain folder.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- Relevant files for exercise 1 can be found in the './src/search' folder.
+- Relevant files for exercise 2 can be found in the './src/store' folder.
+- The Search screen page container is in './src/pages/index.tsx'.
+- All CSS stylesheets are located in './src/styles'.
 
-## Learn More
+## Implementation/Design decisions
+Typescript was used to enforce type safety and reduce the need for type guard related logic. This assumes that any user of the store will also be using Typescript.
 
-To learn more about Next.js, take a look at the following resources:
+I made sure to not include any 3rd party dependencies except for dev tooling. This is to follow the criteria of minimal abstractions.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+I did choose to create some custom hooks and a thin api client wrapper to help with encapsulation and ease of reuse.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Some efforts were made in regards to styling to make the UI functional, minimal, and intuitive. It includes visual feedback for loading and error states, and a layout that tries to minimise layout shifts.
 
-## Deploy on Vercel
+The store is implemented and minimally tested to ensure the basic functionality as requested for exercise 2 are all functional. I am sure there are edge cases that haven't been addressed, but it is robust enough as a toy example completed under time constraints.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
