@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import useSearch from "../search/hooks";
+import useSearch, { FetchStatus } from "../search/hooks";
 import SearchBar from "../search/SearchBar";
 import SearchResultList from "../search/SearchResultList";
 import styles from "../styles/Search.module.css";
@@ -16,7 +16,11 @@ const Search: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <SearchBar onSubmit={getSearchResult} />
+        <SearchBar
+          onSubmit={getSearchResult}
+          error={error?.message}
+          isLoading={status === FetchStatus.Loading}
+        />
         <SearchResultList items={data?.items} />
       </main>
     </div>

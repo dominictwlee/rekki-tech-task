@@ -1,7 +1,7 @@
 import { useState } from "react";
 import * as api from "./api";
 
-enum FetchStatus {
+export enum FetchStatus {
   Idle = "idle",
   Loading = "loading",
   Success = "success",
@@ -22,10 +22,12 @@ export default function useSearch() {
         params: { q: `title:${searchTerms}` },
       });
       setData(response.data);
+      setStatus(FetchStatus.Success);
       return response;
     } catch (error) {
       const err = error as api.APIError;
       setError(err);
+      setStatus(FetchStatus.Error);
       return err;
     }
   };
