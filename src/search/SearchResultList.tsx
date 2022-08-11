@@ -7,14 +7,18 @@ interface SearchResultListProps {
 export default function SearchResultList({ items }: SearchResultListProps) {
   return (
     <dl style={{ height: "40vh", overflowY: "auto" }}>
-      {items?.map(({ name, description, authors, global_id }) => (
-        <SearchResultListItem
-          key={global_id}
-          title={name}
-          description={description}
-          authors={authors}
-        />
-      ))}
+      {items?.length === 0 ? (
+        <dt>No search results</dt>
+      ) : (
+        items?.map(({ name, description, authors, global_id }) => (
+          <SearchResultListItem
+            key={global_id}
+            title={name}
+            description={description}
+            authors={authors}
+          />
+        ))
+      )}
     </dl>
   );
 }
