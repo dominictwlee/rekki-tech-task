@@ -35,5 +35,5 @@ I did choose to create some custom hooks and a thin api client wrapper to help w
 
 Some efforts were made in regards to styling to make the UI functional, minimal, and intuitive. It includes visual feedback for loading and error states, and a layout that tries to minimise layout shifts.
 
-The store is implemented and minimally tested to ensure the basic functionality as requested for exercise 2 are all functional. I am sure there are edge cases that haven't been addressed, but it is robust enough as a toy example completed under time constraints.
+The store is implemented and minimally tested to ensure the basic functionality for exercise 2 are all functional. I am sure there are edge cases that haven't been addressed, but it is robust enough as a toy example completed under time constraints.
 
